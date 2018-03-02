@@ -4,3 +4,6 @@
 ".ipynb_checkpoints"
 *.ipynb
 "*.ipynb"
+/*/__pycache__/*
+./*/*/__pycache__/*
+./*/*/*/__pycache__/*
