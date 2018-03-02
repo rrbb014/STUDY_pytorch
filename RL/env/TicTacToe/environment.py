@@ -1,6 +1,6 @@
-# Tic-Tac-Toe Implementation
-# Author: rrbb014
-# date: 2018.02.23
+# Tic-Tac-Toe Environment 
+# author: rrbb014 
+# date: 2018.03.02
 # reference: Reinforcement Learning: An introduction, 2nd edition
 #            https://github.com/ShangtongZhang/reinforcement-learning-an-introduction
 
@@ -10,14 +10,14 @@ from dotenv import load_dotenv
 
 load_dotenv('./.env')
 
-class TictactoeEnvironment:
+class TictactoeEnv:
 	
 	def __init__(self):
 		self.width = int(os.environ.get('ENV_WIDTH'))
 		self.height = int(os.environ.get('ENV_HEIGHT'))
 		self.gameboard = np.zeros([self.width, self.height])
+		self.possible_actions = range(9)
 		
-	
 	def __str__(self):
 		change_symbol_dict = {0: '0', 1: '*', -1: 'X'}
 		return '''
@@ -25,7 +25,8 @@ class TictactoeEnvironment:
 			-------------------
 			|  {3}  |  {4}  |  {5}  |
 			-------------------
-			|  {6}  |  {7}  |  {8}  |'''.format(change_symbol_dict[self.gameboard[0][0]], change_symbol_dict[self.gameboard[0][1]], change_symbol_dict[self.gameboard[0][2]],
+			|  {6}  |  {7}  |  {8}  |
+            '''.format(change_symbol_dict[self.gameboard[0][0]], change_symbol_dict[self.gameboard[0][1]], change_symbol_dict[self.gameboard[0][2]],
 												change_symbol_dict[self.gameboard[1][0]], change_symbol_dict[self.gameboard[1][1]], change_symbol_dict[self.gameboard[1][2]],
 												change_symbol_dict[self.gameboard[2][0]], change_symbol_dict[self.gameboard[2][1]], change_symbol_dict[self.gameboard[2][2]])
 
@@ -69,38 +70,3 @@ class TictactoeEnvironment:
 			return True
 		else:
 			return False
-	
-		
-class HumanPlayer:
-	
-	def __init__(self, name, symbol):
-		self.name = name
-		self.symbol = symbol
-		self.current_state = None
-		self.current_action = None
-	
-	def action(self):
-		while True:
-			self.current_action = int(input("Please type your position >> "))
-			if env.check_input(self):
-				break
-			else:
-				print('Wrong choice! Try again..')
-	
-		
-if __name__ == '__main__':
-	env = TictactoeEnvironment()
-	player1 = HumanPlayer('player1', 1)
-	player2 = HumanPlayer('player2', -1)
-	
-	while True:
-		print(env)
-		# Player1 turn
-		player1.action()
-		if env.check_game():
-			break
-		print(env)
-		player2.action()
-		if env.check_game():
-			break
-		
