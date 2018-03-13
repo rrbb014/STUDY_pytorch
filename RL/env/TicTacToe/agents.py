@@ -144,18 +144,18 @@ class PolicyIterationAgent():
     
     def save_model(self):
         if len(self.policy_table) != 0 and len(self.value_table) != 0:
-            with open('policy_iteration_policy_' + str(self.symbol), 'wb') as f:
+            with open('./agents_model/policy_iteration_policy_' + str(self.symbol), 'wb') as f:
                 dill.dump(self.policy_table, f)
-            with open('policy_iteration_value_' + str(self.symbol), 'wb') as f:
+            with open('./agents_model/policy_iteration_value_' + str(self.symbol), 'wb') as f:
                 dill.dump(self.value_table, f)
         else:
             print('No data. please explore.')
     
     def load_model(self):
         try:
-            with open('policy_iteration_policy_' + str(self.symbol), 'rb') as f:
+            with open('./agents_model/policy_iteration_policy_' + str(self.symbol), 'rb') as f:
                 self.policy_table = dill.load(f)
-            with open('policy_iteration_value_' + str(self.symbol), 'rb') as f:
+            with open('./agents_model/policy_iteration_value_' + str(self.symbol), 'rb') as f:
                 self.value_table = dill.load(f)
         except(FileNotFoundError):
             print('No model files. Cannot load model')
