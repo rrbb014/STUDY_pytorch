@@ -11,4 +11,7 @@
 "./*/*/__pycache__/*"
 "./*/*/*/__pycache__/*"
 __pycache__
-"./*/*/*/agents_model/*"
+/*/*/*/agents_model/*
+/agents_model/
+/mnist_data/
+/*/mnist_data/
