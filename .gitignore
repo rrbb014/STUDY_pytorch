@@ -11,3 +11,4 @@ __pycache__
 /agents_model/
 /mnist_data/
 /*/mnist_data/
+*.txt
